@@ -15,7 +15,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const template = `
+const defaultTemplate = `
     <div class="vimeography-thumbnail-container" v-observe-visibility="visibilityChanged">
       <div class="swiper">
         <div class="swiper-wrapper">
@@ -33,9 +33,13 @@ const template = `
     </div>
   `;
 
+const userTemplate = document.querySelector(
+  "#vimeography-harvestone-thumbnail-container"
+);
+
 const ThumbnailContainer = {
   props: ["videos", "activeVideoId"],
-  template,
+  template: userTemplate ? userTemplate.innerText : defaultTemplate,
   components: {
     Thumbnail,
   },

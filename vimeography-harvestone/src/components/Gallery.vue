@@ -5,7 +5,7 @@
 
   import ThumbnailContainer from './ThumbnailContainer.vue';
 
-  const template = `
+  const defaultTemplate = `
     <div class="vimeography-gallery">
       <filters v-if="this.pro"></filters>
       <player :activeVideo="this.activeVideo"></player>
@@ -13,9 +13,13 @@
     </div>
   `;
 
+const userTemplate = document.querySelector(
+  "#vimeography-harvestone-gallery"
+);
+
   const Gallery = {
     name: 'gallery',
-    template,
+    template: userTemplate ? userTemplate.innerText : defaultTemplate,
     methods: {
       ...mapActions([
         'loadVideo',
